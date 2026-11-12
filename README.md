@@ -34,30 +34,35 @@ Attackers exploit this by pre-registering these hallucinated names on public reg
 ## 🚀 Installation
 
 Clone the repository and install it as an editable package:
-
+```bash
 git clone https://github.com/mrxdvibe/Slopsquatting-Detector.git
 cd Slopsquatting-Detector
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
-
+```
 ## 🛠️ Usage
 
 ### Python (PyPI)
+```bash
 slopdetect requirements.txt
-
+```
 ### JavaScript / Node.js (npm)
+```bash
 slopdetect package.json
-
+```
 ### Lockfiles (Concurrent Scanning)
+```bash
 slopdetect package-lock.json --concurrent
-
+```
 ### CI/CD Integration (GitHub Actions)
+```bash
 slopdetect requirements.txt --fail-on-danger
-
+```
 ### JSON Output
+```bash
 slopdetect package.json --format json > report.json
-
+```
 ## 📊 Risk Levels
 
 The scanner categorizes packages into three distinct risk levels:
