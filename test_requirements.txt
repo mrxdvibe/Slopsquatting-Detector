@@ -1,0 +1,4 @@
+requests>=2.31
+cyber-secure-tool==1.0.0
+rich>=13
+slopsquatting-definitely-fake-pkg
