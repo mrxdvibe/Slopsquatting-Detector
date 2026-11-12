@@ -1,0 +1,42 @@
+name: "Slopsquatting Security Scan"
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Kodu yüklə
+      uses: actions/checkout@v4
+
+    - name: Python quraşdır
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Aləti quraşdır
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+
+    - name: requirements.txt yoxla (PyPI)
+      run: |
+        if [ -f requirements.txt ]; then
+          slopdetect requirements.txt --fail-on-danger
+        fi
+
+    - name: package.json yoxla (npm)
+      run: |
+        if [ -f package.json ]; then
+          slopdetect package.json --fail-on-danger
+        fi
+
+    - name: package-lock.json yoxla (paralel)
+      run: |
+        if [ -f package-lock.json ]; then
+          slopdetect package-lock.json --concurrent --fail-on-danger
+        fi

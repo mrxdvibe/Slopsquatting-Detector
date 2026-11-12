@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slopsquatting-detector"
+version = "0.3.0"
+description = "AI tərəfindən uydurulan zəhərli paketləri (slopsquatting) aşkarlayan alət."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31.0",
+    "rich>=13.0.0",
+]
+
+[project.scripts]
+slopdetect = "main:main"
+
+[tool.setuptools]
+py-modules = ["main"]
+packages = ["core", "ui"]
