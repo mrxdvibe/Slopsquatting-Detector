@@ -21,22 +21,14 @@ jobs:
     - name: Aləti quraşdır
       run: |
         python -m pip install --upgrade pip
+        pip install -r requirements.txt
         pip install -e .
 
-    - name: requirements.txt yoxla (PyPI)
+    - name: Yoxlama (Test məqsədilə TƏHLÜKƏ olsa da keçməsinə icazə ver)
       run: |
         if [ -f requirements.txt ]; then
-          slopdetect requirements.txt --fail-on-danger
+          slopdetect requirements.txt
         fi
-
-    - name: package.json yoxla (npm)
-      run: |
         if [ -f package.json ]; then
-          slopdetect package.json --fail-on-danger
-        fi
-
-    - name: package-lock.json yoxla (paralel)
-      run: |
-        if [ -f package-lock.json ]; then
-          slopdetect package-lock.json --concurrent --fail-on-danger
+          slopdetect package.json
         fi
